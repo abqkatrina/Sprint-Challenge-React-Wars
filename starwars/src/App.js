@@ -1,41 +1,21 @@
 
-import React, {useState, useEffect} from "react";
-import axios from "axios";
-import Content from "./components/Content/Content.js";
-import Footer from "./components/Footer/Footer.js";
-import Header from "./components/Header/Header.js"
+import React from "react";
+import Content from "./components/Content/Content";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header"
+import "./index.css";
+import "./App.css";
 
 function App() {
 
-  const [person, setPerson] = useState([]);
-  
-  useEffect(() => {
-    
-    axios.get("https://swapi.co/api/people/")
+  return (
+    <div className="App">
+      <Header/>
+      <Content/>
+      <Footer/>
 
-    .then(response => {
-      console.log("app works", response);
-      setPerson(response.data);
-    })
-
-    .catch(error => {
-      console.log("oops, ", error);
-    })
-    
-  }, []);
-
-  
-
-return (
-  <div className="App">
-  
-   
-    <Header/>
-    <Content props={props}/>
-    <Footer name={person.name}/>
-
-  </div>
-);
+    </div>
+  );
 }
 
 export default App;
